@@ -11,7 +11,7 @@ class SelectList {
      * @param {object} options - Дополнительные настройки для создания объекта SelectList.
      * @param {boolean} options.isRequired - Определяет, должен ли быть выбран хотя бы один элемент (по умолчанию true).
      */
-    constructor(element, { isRequired = true } = {}) {
+    constructor(element, {isRequired = true} = {}) {
         this.element = element
         this.isRequired = isRequired
 
@@ -131,7 +131,7 @@ class SelectList {
                     }
                 }
 
-                const event = new Event('change', { bubbles: true })
+                const event = new Event('change', {bubbles: true})
                 this.dispatchEvent(event)
             }
         })
@@ -147,6 +147,6 @@ class SelectList {
 
         const observer = new MutationObserver(callback)
 
-        observer.observe(this.element, { childList: true })
+        observer.observe(this.element, {childList: true})
     }
 }
