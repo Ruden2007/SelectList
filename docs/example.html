@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SelectList example</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            margin: 20px auto;
+        }
+
+        p {
+            margin: 16px auto;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            padding: 2rem;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .select-list .select-list__item {
+            display: block;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .select-list .select-list__item:hover,
+        .select-list .select-list__item.active {
+            background-color: rgba(100, 104, 107, 0.44);
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Пример использования SelectList</h1>
+</header>
+<main>
+    <div class="main__column-1">
+        <h2>Выберите элемент из списка:</h2>
+        <p>(isRequired: true)</p>
+        <div class="list-1">
+            <div class="list-elem">Element 1</div>
+            <div class="list-elem">Element 2</div>
+            <div class="list-elem">Element 3</div>
+            <div class="list-elem">Element 4</div>
+        </div>
+    </div>
+
+    <div class="main__column-2">
+        <h2>Выберите элемент из списка:</h2>
+        <p>(isRequired: false)</p>
+        <div class="list-2">
+            <div class="list-elem">Element 1</div>
+            <div class="list-elem">Element 2</div>
+            <div class="list-elem">Element 3</div>
+            <div class="list-elem">Element 4</div>
+        </div>
+    </div>
+</main>
+<footer>
+    &copy; 2023 Ruden. Все права защищены.
+</footer>
+<script src="SelectList.js"></script>
+<script>
+    const list1 = new SelectList(document.querySelector('.list-1'), { isRequired: true })
+    const list2 = new SelectList(document.querySelector('.list-2'), { isRequired: false })
+</script>
+</body>
+</html>
