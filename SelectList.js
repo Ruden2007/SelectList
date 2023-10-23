@@ -150,3 +150,5 @@ class SelectList {
         observer.observe(this.element, {childList: true})
     }
 }
+
+export default SelectList
