@@ -13,21 +13,13 @@ class SelectList {
      */
     constructor(element, { isRequired = true } = {}) {
         this.element = element
-        this.element.classList.add('select-list')
-        this.bindEvents()
-        this.addSelectListItemClass()
         this.isRequired = isRequired
 
-        const activeItem = this.element.querySelector('.select-list__item.active')
-        if (activeItem) {
-            this.activeItem = activeItem
-        } else if (this.isRequired) {
-            const firstItem = this.element.querySelector('.select-list__item')
-            if (firstItem) {
-                firstItem.classList.add('active')
-                this.activeItem = firstItem
-            }
-        }
+        this.element.classList.add('select-list')
+
+        this.bindEvents()
+        this.addSelectListItemClass()
+        this.initializeActiveItem()
     }
 
     /**
@@ -99,6 +91,27 @@ class SelectList {
     }
 
     /**
+     * Инициализирует активный элемент SelectList. Если уже есть элемент с классом 'select-list__item.active',
+     * устанавливает его как активный. В противном случае, если isRequired установлен в true, устанавливает
+     * первый элемент списка как активный и добавляет ему класс 'active'.
+     */
+    initializeActiveItem() {
+        /**
+         * @type {HTMLElement}
+         */
+        const activeItem = this.element.querySelector('.select-list__item.active')
+        if (activeItem) {
+            this.activeItem = activeItem
+        } else if (this.isRequired) {
+            const firstItem = this.element.querySelector('.select-list__item')
+            if (firstItem) {
+                firstItem.classList.add('active')
+                this.activeItem = firstItem
+            }
+        }
+    }
+
+    /**
      * Привязывает события к элементу SelectList для обработки выбора элемента.
      */
     bindEvents() {
@@ -123,16 +136,17 @@ class SelectList {
             }
         })
 
-        const callback = (mutationList, observer) => {
+        const callback = (mutationList) => {
             console.log(mutationList)
             for (const mutation of mutationList) {
                 if (mutation.type !== "childList") return false
                 this.addSelectListItemClass()
+                this.initializeActiveItem()
             }
         }
 
         const observer = new MutationObserver(callback)
 
-        observer.observe(this.element, {childList: true})
+        observer.observe(this.element, { childList: true })
     }
 }
