@@ -6,12 +6,12 @@
 
 ## Установка
 
-Просто подключите файл `selectlist.js` к вашему проекту:
+Просто подключите файл `SelectList.js` к вашему проекту:
 
 ```html
 <script src="SelectList.js"></script>
 ```
-или
+или используйте ссылку
 ```html
 <script src="https://ruden2007.github.io/SelectList/SelectList.js"></script>
 ```
