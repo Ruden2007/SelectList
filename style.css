@@ -1,0 +1,10 @@
+.select-list .select-list__item {
+    display: block;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.select-list .select-list__item:hover,
+.select-list .select-list__item.active {
+    background-color: rgba(100, 104, 107, 0.44);
+}
